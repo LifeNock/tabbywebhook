@@ -14,140 +14,158 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background: #0d1117;
-            color: #c9d1d9;
+            background: #000000;
+            color: #ffffff;
             line-height: 1.6;
         }
         
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 3rem 2rem;
         }
         
         header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #30363d;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #ffffff;
         }
         
         header img {
-            width: 48px;
-            height: 48px;
+            width: 56px;
+            height: 56px;
         }
         
         header h1 {
-            font-size: 1.5rem;
-            color: #58a6ff;
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
         }
         
         .severity-badge {
             display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ffffff;
             font-size: 0.875rem;
-            font-weight: 600;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
         
         .severity-critical {
-            background: #dc143c;
-            color: white;
+            background: #ffffff;
+            color: #000000;
         }
         
         .severity-warning {
-            background: #ff8c00;
-            color: white;
+            background: transparent;
+            color: #ffffff;
         }
         
         .severity-info {
-            background: #808080;
-            color: white;
+            background: transparent;
+            color: #ffffff;
+            opacity: 0.7;
         }
         
         .log-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            background: #000000;
+            border: 1px solid #ffffff;
+            padding: 2rem;
+            margin-bottom: 2rem;
         }
         
         .log-card h2 {
-            color: #58a6ff;
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
         }
         
         .meta-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ffffff;
         }
         
         .meta-item {
             display: flex;
             flex-direction: column;
-            gap: 0.25rem;
+            gap: 0.5rem;
         }
         
         .meta-label {
-            font-size: 0.875rem;
-            color: #8b949e;
-            font-weight: 600;
+            font-size: 0.75rem;
+            color: #ffffff;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
         }
         
         .meta-value {
-            color: #c9d1d9;
+            color: #ffffff;
+            font-size: 0.95rem;
         }
         
         .message-box {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 1rem;
+            background: #000000;
+            border: 1px solid #ffffff;
+            padding: 1.5rem;
             font-family: 'Courier New', monospace;
             font-size: 0.875rem;
             white-space: pre-wrap;
             overflow-x: auto;
-            margin-top: 1rem;
+            margin-top: 2rem;
         }
         
         .ai-analysis {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2d1b4e 100%);
-            border: 1px solid #58a6ff;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            background: #000000;
+            border: 1px solid #ffffff;
+            padding: 2rem;
+            margin-bottom: 2rem;
         }
         
         .ai-analysis h2 {
-            color: #58a6ff;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ffffff;
         }
         
-        .ai-analysis h2::before {
-            content: "🤖";
+        .ai-analysis p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
         
         .recommendation {
-            background: rgba(88, 166, 255, 0.1);
-            border-left: 3px solid #58a6ff;
-            padding: 1rem;
-            margin-top: 1rem;
-            border-radius: 4px;
+            background: #000000;
+            border-left: 2px solid #ffffff;
+            padding: 1.5rem;
+            margin-top: 2rem;
         }
         
         .recommendation h3 {
-            color: #58a6ff;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+        
+        .recommendation p {
+            margin: 0;
+            line-height: 1.7;
         }
     </style>
 </head>
@@ -155,7 +173,7 @@
     <div class="container">
         <header>
             <img src="../assets/tabbycluster.png" alt="TabbyCluster">
-            <h1>TabbyCluster Webhook Logs</h1>
+            <h1>TabbyCluster Logs</h1>
         </header>
         
         <div class="log-card">
