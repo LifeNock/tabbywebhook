@@ -1,0 +1,21 @@
+{
+  "name": "tabby-webhook",
+  "version": "0.1.0",
+  "description": "smart webhook relay system that actually stores your logs",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": ["webhook", "discord", "logging", "relay"],
+  "author": "TabbyCluster",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
