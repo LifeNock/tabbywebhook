@@ -9,5 +9,9 @@
   },
   "discord": {
     "webhookUrl": "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"
+  },
+  "llm": {
+    "apiKey": "YOUR_GOOGLE_GEMINI_API_KEY",
+    "enabled": true
   }
 }
