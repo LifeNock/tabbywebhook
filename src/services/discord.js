@@ -10,18 +10,33 @@ function truncateMessage(message, maxLength = 4096) {
     return message.substring(0, maxLength - 3) + '...';
 }
 
-async function sendToDiscord(webhookUrl, entry, shouldPing) {
+async function sendToDiscord(webhookUrl, entry, shouldPing, logPageUrl = null) {
     const embed = {
         title: entry.title,
-        description: truncateMessage(entry.message),
+        description: truncateMessage(entry.message, 300),
         color: getSeverityColor(entry.severity),
         fields: [
             { name: 'Severity', value: entry.severity.toString(), inline: true },
             { name: 'Trigger', value: entry.trigger || 'N/A', inline: true },
             { name: 'Time', value: new Date(entry.created_at).toISOString(), inline: true }
         ],
-        footer: { text: `Log ID: ${entry.id}` }
+        footer: { 
+            text: `Log ID: ${entry.id} • TabbyCluster`,
+            icon_url: 'https://lifenock.github.io/tabbywebhook/public/assets/tabbycluster.png'
+        },
+        thumbnail: {
+            url: 'https://lifenock.github.io/tabbywebhook/public/assets/tabbycluster.png'
+        },
+        timestamp: new Date(entry.created_at).toISOString()
     };
+
+    if (logPageUrl) {
+        embed.fields.push({
+            name: '📋 Full Details',
+            value: `[View complete analysis and log](${logPageUrl})`,
+            inline: false
+        });
+    }
 
     const payload = {
         content: shouldPing ? '@here' : '',

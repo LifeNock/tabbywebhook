@@ -3,6 +3,7 @@ const { createLogEntry, markAsSent } = require('./services/logger');
 const { sendToDiscord } = require('./services/discord');
 const { shouldSendToDiscord, shouldPing } = require('./utils/severity');
 const { initLLM, analyzeLog } = require('./services/llm');
+const { generateLogPage, getLogPageUrl } = require('./services/page-generator');
 
 async function processLog({ title, message, severity, trigger }, config, context = {}) {
     let finalSeverity = severity;
@@ -21,11 +22,15 @@ async function processLog({ title, message, severity, trigger }, config, context
 
     const entry = await createLogEntry({ title, message, severity: finalSeverity, trigger });
     
+    const logPageFilename = await generateLogPage(entry, aiAnalysis);
+    const logPageUrl = getLogPageUrl(entry.id);
+    console.log(`generated log page: ${logPageUrl}`);
+    
     if (shouldSendToDiscord(finalSeverity)) {
         const ping = shouldPing(finalSeverity);
         
         try {
-            await sendToDiscord(config.discord.webhookUrl, entry, ping);
+            await sendToDiscord(config.discord.webhookUrl, entry, ping, logPageUrl);
             await markAsSent(entry.id, ping);
             console.log(`sent log ${entry.id} to discord (ping: ${ping})`);
         } catch (error) {
@@ -35,7 +40,7 @@ async function processLog({ title, message, severity, trigger }, config, context
         console.log(`stored log ${entry.id} without sending to discord`);
     }
     
-    return { entry, aiAnalysis };
+    return { entry, aiAnalysis, logPageUrl };
 }
 
 async function init(config) {
