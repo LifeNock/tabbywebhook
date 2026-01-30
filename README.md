@@ -1,6 +1,6 @@
 # tabby-webhook
 
-smart webhook relay system that actually stores your logs instead of just yeeting them into discord
+smart webhook relay system that actually stores your logs instead of just placing them into discord
 
 ## what it does
 
